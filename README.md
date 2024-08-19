@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# Dynamic Data Table Visualization with Filters
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is a dynamic web application built using React and TypeScript that visualizes hierarchical data in a collapsible table format. The application features filtering options to customize the view based on legal entities, versions (actual or budget), and currency. It also includes an "All Products" overview that aggregates and summarizes the data across all products.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Collapsible/Expandable Table**: The table headers (both rows and columns) have a hierarchical tree structure. Users can expand or collapse these levels horizontally for columns and vertically for rows.
+- **Data Aggregation**: An "All Products" entry is provided, which aggregates all metrics, such as total units, average unit price, and total gross revenue across all products.
+- **Filtering**: Users can filter the data by legal entity (region), version (Actual or Budget), and currency (BRL, USD, EUR). These filters dynamically update the table content.
+- **Currency Conversion**: The application converts values according to the selected currency and adjusts for the "Budget" version, applying a 50% increase where applicable.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies Used
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **React**: For building the user interface.
+- **TypeScript**: For static typing and better development experience.
+- **SCSS**: For styling the components with advanced features like variables, nesting, and mixins.
+- **Material-UI**: For UI components, icons, and layout.
+- **Bootstrap**: For additional styling and layout options.
 
-### `npm test`
+## Project Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **src/components**: Contains React components like `FilterPanel` and `DataTable`.
+- **src/data**: Contains the mock data and type definitions (`mockData.ts`).
+- **src/utils**: Contains utility functions such as `DataAggregator` for data processing.
+- **public**: Contains static files like `index.html`.
 
-### `npm run build`
+## How to Run
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the Repository**:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   git clone https://github.com/matheuszandona1/table-app
+   cd table-app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install Dependencies**:
 
-### `npm run eject`
+   npm install or yarn
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. **Start the Development Server**:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   npm start or yarn start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   The application will be available at http://localhost:3000.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Usage
 
-## Learn More
+1. **Viewing Data**: The main table displays data in a collapsible format. Click on the arrow icons to expand or collapse rows and columns.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. **Filtering Data**: Use the filter panel to select the desired legal entity, version, and currency. The table will update automatically based on your selections.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. **"All Products" View**: The topmost item, "All Products," provides a summarized view of all products' metrics. Click on it to view individual products within.
+
+## Future Enhancements
+
+Advanced Sorting: Add functionality to sort columns and rows based on specific metrics.
+Customizable Metrics: Allow users to select which metrics (Units, Unit Price, Gross Revenue) they want to view.
+Export Data: Provide an option to export the displayed table data to a CSV or Excel file.
+Contributing
+Contributions are welcome! Please submit a pull request or open an issue to discuss your ideas.
+
+### Explanation:
+
+- **Overview**: Describes the purpose of the project.
+- **Features**: Lists the key features like the collapsible table, filtering, and currency conversion.
+- **Technologies Used**: Specifies the technologies and libraries used.
+- **Project Structure**: Outlines the organization of the project files.
+- **How to Run**: Provides instructions for cloning, installing dependencies, and running the project.
+- **Usage**: Explains how to interact with the application.
+- **Future Enhancements**: Suggests potential improvements.

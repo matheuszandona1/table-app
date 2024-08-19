@@ -183,6 +183,5 @@ export const mockData: MockData = {
 
 export const currencyConversionRates: Record<Currency, number> = {
   BRL: 1,
-  USD: 0.20,  // Example conversion rate from BRL to USD
-  EUR: 0.18,  // Example conversion rate from BRL to EUR
-};
+  USD: 0.20, 
+  EUR: 0.18, }

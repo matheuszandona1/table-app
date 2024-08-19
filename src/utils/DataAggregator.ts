@@ -28,7 +28,7 @@ export const aggregateData = (data: any) => {
   const allProductsItem = {
     article: "All Products",
     metrics: allProductsMetrics,
-    nestedRows: data, // All other products will be nested inside "All Products"
+    nestedRows: data,
   };
 
   // Return the aggregated data with "All Products" as the first item
