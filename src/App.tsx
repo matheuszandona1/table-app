@@ -1,16 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FilterPanel from './components/FilterPanel';
 import DataTable from './components/DataTable';
-import { aggregateData } from './utils/DataAggregator';
-import { mockData, Filters } from './data/mockData';
+import { aggregateData, applyConversionAndBudget } from './utils/DataAggregator';
+import { mockData, Filters, DataItem, LegalEntity } from './data/mockData'; // Removed 'Currency'
+
 
 const ParentComponent: React.FC = () => {
   const [filters, setFilters] = useState<Filters>({ legalEntity: '11', version: 'Actual', currency: 'BRL' });
-  const [nightMode, setNightMode] = useState(false); // Night mode state
-  const [regions, setRegions] = useState<string[]>(mockData.regions[filters.legalEntity as keyof typeof mockData.regions]);
-  const [filteredData, setFilteredData] = useState(() =>
-    aggregateData(mockData.data.filter(item => item.legalEntity === filters.legalEntity && item.version === filters.version))
+  const [regions, setRegions] = useState<string[]>(mockData.regions[filters.legalEntity as LegalEntity]);
+  const [filteredData, setFilteredData] = useState<DataItem[]>(() =>
+    aggregateData(mockData.data, filters) // Pass filters as the second argument
   );
+  
+  const [nightMode, setNightMode] = useState(false);
+
+  useEffect(() => {
+    const newRegions = mockData.regions[filters.legalEntity as LegalEntity];
+    setRegions(newRegions);
+
+    const filteredData = mockData.data
+      .filter((item: DataItem) => item.legalEntity === filters.legalEntity)
+      .map(item => applyConversionAndBudget(item, filters.currency, filters.version === 'Budget'));
+
+    setFilteredData(aggregateData(filteredData, filters)); // Pass filters as the second argument
+  }, [filters]);
 
   const handleFilterChange = (newFilters: Filters) => {
     setFilters(newFilters);
@@ -20,9 +33,12 @@ const ParentComponent: React.FC = () => {
     setNightMode(!nightMode);
   };
 
+  
+  
+
   return (
     <div className={nightMode ? 'night-mode' : ''}>
-      <div className='container buttonContainer'>
+      <div className="container buttonContainer">
         <button onClick={toggleNightMode} className="toggle-night-mode">
           {nightMode ? 'Day Mode' : 'Night Mode'}
         </button>
@@ -30,6 +46,7 @@ const ParentComponent: React.FC = () => {
       </div>
       <FilterPanel filters={filters} onFilterChange={handleFilterChange} />
       <DataTable data={filteredData} regions={regions} />
+      
     </div>
   );
 };

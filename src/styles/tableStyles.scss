@@ -8,14 +8,14 @@ button {
 }
 
 #root {
-  background-color: #ccd5ae;
+  background-color: #fff;
   height: 100%;
 }
 .table-row {
   cursor: pointer;
-  background-color: #fefae0;
+  background-color: #fff;
   &.dropdown {
-    background-color: #fefae0;
+    background-color: lightgrey;
   }
 }
 
@@ -26,19 +26,19 @@ td {
   vertical-align: middle;
 }
 thead tr th {
-  border-right: 1px solid #fefae0;
+  border-right: 1px solid lightgrey;
 }
 
 th {
-  background-color: #e9edc9;
+  background-color: #fff;
   color: #352f44;
 }
 tr {
-  background-color: #ccd5ae;
+  background-color: #fff;
 }
 
 tr:nth-child(odd) {
-  background-color: #fefae0;
+  background-color: lightgrey;
 }
 
 tr:hover {
@@ -51,7 +51,7 @@ td {
 
 .table-row {
   cursor: pointer;
-  border: 1px solid #faedcd;
+  border: 1px solid lightgrey;
 
   &.level-0 {
     td {
@@ -98,7 +98,7 @@ td {
   margin-top: 80px;
 }
 .thSize {
-  background-color: #e9edc9;
+  background-color: #fff;
   border: none;
 }
 
