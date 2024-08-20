@@ -51,8 +51,10 @@ td {
 
 .table-row {
   cursor: pointer;
-  border: 1px solid lightgrey;
 
+  td {
+    border: 1px solid lightgrey;
+  }
   &.level-0 {
     td {
       padding-left: 64px;
